@@ -96,7 +96,8 @@ public class ChatDetailActivity extends AppCompatActivity {
 
                 String message = binding.etMessage.getText().toString();
                 final MessageModel model = new MessageModel(senderId,message);
-                model.setTimestamp(new Date().getTime());
+
+                model.setTimestamp(new Date().getTime()/1000);
                 binding.etMessage.setText(" ");
 
                 database.getReference().child("chats").child(senderRoom).push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
